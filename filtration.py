@@ -21,9 +21,7 @@ year_2023 = regional_data_final[regional_data_final["MMWRyear"] == 2023]
 
 list_of_regions = [year_2019_2020, year_2021, year_2022, year_2023]
 
-list_of_regions2 = []
-
 for i in range(4):
     for j in range(1, 11):
         current = list_of_regions[i][list_of_regions[i]["Jurisdiction"].str.contains(r'\b' + "HHS Region " + str(j) + r'\b', regex=True, case=False)]
-        list_of_regions2.append(current)
+        current.to_csv(f"covid_frame{i}{j-1}.csv", index=False)
