@@ -1,0 +1,24 @@
+```{r}
+csv_files <- list.files(pattern = "*.csv")
+
+library(ggplot2)
+
+for (file in csv_files) {
+
+  data <- read.csv(file)
+
+  if ("MMWRweek" %in% names(data) && "COVID.19.Deaths" %in% names(data)) {
+   
+    p <- ggplot(data, aes(x = MMWRweek, y = COVID.19.Deaths)) +
+      ylim(0, 4500)+
+      geom_point() +
+      ggtitle(paste("Scatter plot for", file)) +
+      xlab("Weeks") +
+      ylab("Covid-19 Deaths")
+    
+    ggsave(filename = paste0("scatter_plot_", file, ".png"), plot = p)
+  } else {
+    message(paste("Skipping file:", file, "- required columns not found"))
+  }
+}
+```
