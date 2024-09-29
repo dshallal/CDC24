@@ -42,19 +42,16 @@ winter1 = regional_data_final2[((regional_data_final2["MMWRweek"] >= 49) & (regi
 winter2 = regional_data_final2[((regional_data_final2["MMWRweek"] >= 1) & (regional_data_final2["MMWRweek"] <= 9))]
 winter = pd.concat([winter1, winter2], ignore_index = True)
 winter_sums = []
-for i in range(1, 11):
-    winter_sums.append((winter.loc[winter["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
 spring = regional_data_final2[((regional_data_final2["MMWRweek"] >= 10) & (regional_data_final2["MMWRweek"] <= 22))]
 spring_sums = []
-for i in range(1, 11):
-    spring_sums.append((spring.loc[spring["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
 summer = regional_data_final2[((regional_data_final2["MMWRweek"] >= 23) & (regional_data_final2["MMWRweek"] <= 35))]
 summer_sums = []
-for i in range(1, 11):
-    summer_sums.append((summer.loc[summer["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
 fall = regional_data_final2[((regional_data_final2["MMWRweek"] >= 36) & (regional_data_final2["MMWRweek"] <= 49))]
 fall_sums = []
 for i in range(1, 11):
+    spring_sums.append((spring.loc[spring["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
+    winter_sums.append((winter.loc[winter["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
+    summer_sums.append((summer.loc[summer["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
     fall_sums.append((fall.loc[fall["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
 
 print(winter_sums)
