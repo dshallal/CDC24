@@ -53,8 +53,3 @@ for i in range(1, 11):
     winter_sums.append((winter.loc[winter["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
     summer_sums.append((summer.loc[summer["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
     fall_sums.append((fall.loc[fall["Jurisdiction"] == "HHS Region " + str(i), ["COVID-19 Deaths"]]).sum())
-
-print(winter_sums)
-print(spring_sums)
-print(summer_sums)
-print(fall_sums)
